@@ -28,20 +28,19 @@ const CardContentText = styled.Text`
   color: ${props => props.theme.SECONDARY};
 `;
 
-const text = 'Some tweet text, Some tweet text, Some tweet text, Some tweet text '
+const text =
+  'Some tweet text, Some tweet text, Some tweet text, Some tweet text ';
 
 function FeedCard() {
   return (
     <Root>
       <FeedCardHeader />
       <CardContentContainer>
-        <CardContentText>
-          {text}
-        </CardContentText>
+        <CardContentText>{text}</CardContentText>
       </CardContentContainer>
       <FeedCardBottom />
     </Root>
-  )
+  );
 }
 
 export default FeedCard;

@@ -73,18 +73,14 @@ function FeedCardHeader() {
           <MetaFullName>
             {firstName} {lastName}
           </MetaFullName>
-          <MetaText style={{ marginLeft: 5 }}>
-            @{username}
-          </MetaText>
+          <MetaText style={{ marginLeft: 5 }}>@{username}</MetaText>
         </MetaTopContainer>
         <MetaBottomContainer>
-          <MetaText>
-            {createdAt}
-          </MetaText>
+          <MetaText>{createdAt}</MetaText>
         </MetaBottomContainer>
       </MetaContainer>
     </Root>
-  )
+  );
 }
 
 export default FeedCardHeader;

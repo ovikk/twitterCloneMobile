@@ -6,13 +6,12 @@ import FeedCard from '../components/FeedCard/FeedCard';
 const Root = styled.View`
   flex: 1;
   paddingTop: 5;
-  backgroundColor: #f2f2f2;
 `;
 
-const List = styled.ScrollView``
+const List = styled.ScrollView``;
 
 class HomeScreen extends Component {
-  state = {  }
+  state = {};
   render() {
     return (
       <Root>
