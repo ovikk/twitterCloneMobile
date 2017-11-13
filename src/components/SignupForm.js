@@ -23,13 +23,15 @@ const Wrapper = styled.View`
 `
 
 const BackButton = styled(Touchable).attrs({
-  feedback: 'opacity'
+  feedback: 'opacity',
+  hitSlop: { top: 20, bottom: 20, right: 20, left: 20 }
 })`
   justifyContent: center;
   alignItems: center;
   position: absolute;
   top: 5%;
   left: 5%;
+  zIndex: 1
 `;
 
 const ButtonConfirm = styled(Touchable).attrs({
