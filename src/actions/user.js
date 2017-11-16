@@ -17,6 +17,7 @@ export function logout() {
   return async (dispatch) => {
     try {
       await AsyncStorage.removeItem('@twitteryoutubeclone');
+
       return dispatch({
         type: 'LOGOUT'
       })

@@ -2,18 +2,18 @@ import React from 'react';
 import styled from 'styled-components/native';
 
 const Root = styled.View`
-  alignitems: center;
-  justifycontent: center;
+  alignItems: center;
+  justifyContent: center;
   flex: 1;
-  backgroundcolor: ${props => props.theme.WHITE};
+  backgroundColor: ${props => props.theme.WHITE};
   width: 90%;
-  alignself: center;
+  alignSelf: center;
 `;
 
 const Text = styled.Text`
   color: ${props => props.theme.PRIMARY};
-  fontsize: 18;
-  textalign: center;
+  fontSize: 18;
+  textAlign: center;
 `;
 
 export default function Welcome() {
@@ -21,5 +21,5 @@ export default function Welcome() {
     <Root>
       <Text>Welcome, if you see this that mean everything work!!!</Text>
     </Root>
-  );
+  )
 }

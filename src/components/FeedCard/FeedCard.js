@@ -33,11 +33,13 @@ function FeedCard({ text, user, createdAt, favoriteCount }) {
     <Root>
       <FeedCardHeader {...user} createdAt={createdAt} />
       <CardContentContainer>
-        <CardContentText>{text}</CardContentText>
+        <CardContentText>
+          {text}
+        </CardContentText>
       </CardContentContainer>
-      <FeedCardBottom  favoriteCount = {favoriteCount}/>
+      <FeedCardBottom favoriteCount={favoriteCount} />
     </Root>
-  );
+  )
 }
 
 export default FeedCard;

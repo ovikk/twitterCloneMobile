@@ -1,10 +1,10 @@
-import { gql } from "react-apollo";
+import { gql } from 'react-apollo';
 
 export default gql`
-  mutation signup (
+  mutation signup(
     $fullName: String!
     $email: String!
-    $password: String! 
+    $password: String!
     $username: String!
     $avatar: String
   ) {
@@ -12,7 +12,7 @@ export default gql`
       fullName: $fullName
       email: $email
       password: $password
-      username: $username 
+      username: $username
       avatar: $avatar
     ) {
       token

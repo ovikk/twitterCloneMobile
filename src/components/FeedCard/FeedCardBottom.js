@@ -39,11 +39,15 @@ function FeedCardBottom({ favoriteCount }) {
           size={ICON_SIZE}
           color={colors.LIGHT_GRAY}
         />
-        <ButtonText>{favoriteCount}</ButtonText>
+        <ButtonText>
+          {favoriteCount}
+        </ButtonText>
       </Button>
       <Button>
         <Entypo name="retweet" color={colors.LIGHT_GRAY} size={ICON_SIZE} />
-        <ButtonText>{favoriteCount}</ButtonText>
+        <ButtonText>
+          {favoriteCount}
+        </ButtonText>
       </Button>
       <Button>
         <Entypo
@@ -51,7 +55,9 @@ function FeedCardBottom({ favoriteCount }) {
           color={isFavorited ? 'red' : colors.LIGHT_GRAY}
           size={ICON_SIZE}
         />
-        <ButtonText>{favoriteCount}</ButtonText>
+        <ButtonText>
+          {favoriteCount}
+        </ButtonText>
       </Button>
     </Root>
   );

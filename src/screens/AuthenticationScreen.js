@@ -4,7 +4,6 @@ import Touchable from '@appandflow/touchable';
 
 import SignupForm from '../components/SignupForm';
 
-
 const Root = styled.View`
   flex: 1;
   backgroundColor: ${props => props.theme.SECONDARY};
@@ -42,7 +41,7 @@ const BottomTextContainer = styled.View`
   bottom: 0;
   left: 0;
   right: 0;
-  height: 30%;
+  height: 200;
   justifyContent: center;
   alignItems: center;
 `;
@@ -70,28 +69,27 @@ class AuthenticationScreen extends Component {
   state = initialState;
 
   _onShowSignupPress = () => this.setState({ showSignup: true });
+
   _onBackPress = () => this.setState({ ...initialState });
 
   render() {
     if (this.state.showSignup) {
       return (
         <Root>
-          <SignupForm onBackPress={this._onBackPress}/>
+          <SignupForm onBackPress={this._onBackPress} />
         </Root>
       )
     }
     return (
       <Root>
         <ButtonSignup onPress={this._onShowSignupPress}>
-          <ButtonSignupText>
-            Get Started
-          </ButtonSignupText>
+          <ButtonSignupText>Get Started</ButtonSignupText>
         </ButtonSignup>
         <BottomTextContainer>
           <ButtonLogin>
-            <ButtonLoginText>
-              Already have an account?
-            </ButtonLoginText>
+             <ButtonLoginText>
+               Already have an account?
+             </ButtonLoginText>
           </ButtonLogin>
         </BottomTextContainer>
       </Root>

@@ -10,11 +10,10 @@ const Root = styled.View`
   alignItems: center;
 `;
 
-export default function Loading({ color = colors.PRIMARY, size = 'large'} = {}) {
+export default function Loading({ color = colors.PRIMARY, size = 'large' } = {}) {
   return (
     <Root>
-      <ActivityIndicator size={size} color={color}/>
+      <ActivityIndicator size={size} color={color} />
     </Root>
   )
 }
-

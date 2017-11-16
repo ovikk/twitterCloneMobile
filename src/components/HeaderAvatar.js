@@ -19,14 +19,13 @@ const Avatar = styled.Image`
 `;
 
 class HeaderAvatar extends Component {
-
   _onOpenActionSheet = () => {
     const options = ['Logout', 'Cancel'];
     const destructiveButtonIndex = 0;
     this.props.showActionSheetWithOptions(
       {
         options,
-        destructiveButtonIndex
+        destructiveButtonIndex,
       },
       buttonIndex => {
         if (buttonIndex === 0) {
@@ -37,14 +36,13 @@ class HeaderAvatar extends Component {
     );
   };
 
-
   render() {
     if (!this.props.info) {
       return (
         <ButtonHeader side="left" disabled>
           <Loading size="small" />
         </ButtonHeader>
-      )
+      );
     }
     return (
       <ButtonHeader side="left" onPress={this._onOpenActionSheet}>

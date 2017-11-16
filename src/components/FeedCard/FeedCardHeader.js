@@ -68,16 +68,18 @@ function FeedCardHeader({ username, firstName, lastName, avatar, createdAt }) {
           <MetaFullName>
             {firstName} {lastName}
           </MetaFullName>
-          <MetaText style={{ marginLeft: 5 }}>@{username}</MetaText>
+          <MetaText style={{ marginLeft: 5 }}>
+            @{username}
+          </MetaText>
         </MetaTopContainer>
         <MetaBottomContainer>
           <MetaText>
-            {distanceInWordsToNow(createdAt)}
+            {distanceInWordsToNow(createdAt)} ago
           </MetaText>
         </MetaBottomContainer>
       </MetaContainer>
     </Root>
-  );
+  )
 }
 
 export default FeedCardHeader;

@@ -8,11 +8,11 @@ import { connect } from 'react-redux';
 
 import { colors, fakeAvatar } from '../utils/constants';
 import SIGNUP_MUTATION from '../graphql/mutations/signup';
-import Loading from './Loading';
+import Loading from '../components/Loading';
 import { login } from '../actions/user';
 
 const Root = styled(Touchable).attrs({
-  feedback: 'none'
+  feedback: 'none',
 })`
   flex: 1;
   position: relative;
@@ -25,28 +25,28 @@ const Wrapper = styled.View`
   alignItems: center;
   justifyContent: center;
   flex: 1;
-`
+`;
 
 const BackButton = styled(Touchable).attrs({
   feedback: 'opacity',
-  hitSlop: { top: 20, bottom: 20, right: 20, left: 20 }
+  hitSlop: { top: 20, bottom: 20, right: 20, left: 20 },
 })`
   justifyContent: center;
   alignItems: center;
   position: absolute;
   top: 5%;
+  zIndex: 1;
   left: 5%;
-  zIndex: 1
 `;
 
 const ButtonConfirm = styled(Touchable).attrs({
-  feedback: 'opacity'
+  feedback: 'opacity',
 })`
   position: absolute;
   bottom: 15%;
   width: 70%;
   height: 50;
-  backgroundColor: ${props => props.theme.PRIMARY}
+  backgroundColor: ${props => props.theme.PRIMARY};
   borderRadius: 10;
   justifyContent: center;
   alignItems: center;
@@ -60,7 +60,6 @@ const ButtonConfirm = styled(Touchable).attrs({
 const ButtonConfirmText = styled.Text`
   color: ${props => props.theme.WHITE};
   fontWeight: 600;
-
 `;
 
 const InputWrapper = styled.View`
@@ -78,28 +77,29 @@ const Input = styled.TextInput.attrs({
   autoCorrect: false,
 })`
   height: 30;
-  color: ${props => props.theme.WHITE}
+  color: ${props => props.theme.WHITE};
 `;
 
-
 class SignupForm extends Component {
-  state = { 
-    fullName:'',
-    email:'',
-    password:'',
-    username:'',
+  state = {
+    fullName: '',
+    email: '',
+    password: '',
+    username: '',
     loading: false,
-   };
+  };
 
-  _onOutsidePress = () => Keyboard.dismiss();  
+  _onOutsidePress = () => Keyboard.dismiss();
 
   _onChangeText = (text, type) => this.setState({ [type]: text });
 
   _checkIfDisabled() {
     const { fullName, email, password, username } = this.state;
-    if (!fullName || !email || !password || !username) { 
+
+    if (!fullName || !email || !password || !username) {
       return true;
     }
+
     return false;
   }
 
@@ -109,28 +109,27 @@ class SignupForm extends Component {
     const { fullName, email, password, username } = this.state;
     const avatar = fakeAvatar;
 
-    const { data } = await this.props.mutate({
-      variables: {
-        fullName,
-        email,
-        password,
-        username,
-        avatar
-      }
-    });
-    
-    try{
-      await AsyncStorage.setItem('@twitteryoutubeclone', data.signup.token)
-      this.setState({ loading: false })
+    try {
+      const { data } = await this.props.mutate({
+        variables: {
+          fullName,
+          email,
+          password,
+          username,
+          avatar,
+        },
+      });
+      await AsyncStorage.setItem('@twitteryoutubeclone', data.signup.token);
+      this.setState({ loading: false });
       return this.props.login();
-    } catch(error) {
+    } catch (error) {
       throw error;
     }
-  }
+  };
 
   render() {
     if (this.state.loading) {
-      return <Loading/>
+      return <Loading />;
     }
     return (
       <Root onPress={this._onOutsidePress}>
@@ -139,46 +138,46 @@ class SignupForm extends Component {
         </BackButton>
         <Wrapper>
           <InputWrapper>
-            <Input 
+            <Input
               placeholder="Full Name"
               autoCapitalize="words"
               onChangeText={text => this._onChangeText(text, 'fullName')}
             />
           </InputWrapper>
           <InputWrapper>
-            <Input 
+            <Input
               placeholder="Email"
-              keyboardType="email-address"
               autoCapitalize="none"
+              keyboardType="email-address"
               onChangeText={text => this._onChangeText(text, 'email')}
             />
           </InputWrapper>
           <InputWrapper>
-            <Input 
-              placeholder= "Password"
+            <Input
+              placeholder="Password"
               secureTextEntry
               onChangeText={text => this._onChangeText(text, 'password')}
             />
           </InputWrapper>
           <InputWrapper>
-            <Input 
-              placeholder= "Username"
+            <Input
+              placeholder="Username"
               autoCapitalize="none"
               onChangeText={text => this._onChangeText(text, 'username')}
             />
           </InputWrapper>
         </Wrapper>
-        <ButtonConfirm onPress={this._onSignupPress} disabled={this._checkIfDisabled()}>
-          <ButtonConfirmText>
-            Sign up
-          </ButtonConfirmText>
+        <ButtonConfirm
+          onPress={this._onSignupPress}
+          disabled={this._checkIfDisabled()}
+        >
+          <ButtonConfirmText>Sign Up</ButtonConfirmText>
         </ButtonConfirm>
       </Root>
     );
   }
 }
 
-export default compose (
-  graphql(SIGNUP_MUTATION),
-  connect(undefined, { login }),
-)(SignupForm);
+export default compose(graphql(SIGNUP_MUTATION), connect(undefined, { login }))(
+  SignupForm,
+);
